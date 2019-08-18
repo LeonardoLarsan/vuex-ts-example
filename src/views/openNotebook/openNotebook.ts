@@ -1,11 +1,9 @@
 import Vue from 'vue';
-import NotebookContainer from '../../containers/NotebookContainer.vue'
 import { addGatosActionContract, state, getSiameseGatoContract } from '../../store/store'
 import gatoInterface from '../../store/models/Gato'
 
 export default Vue.extend({
   name: 'openNotebook',
-  components: { NotebookContainer },
   data: () => ({
     gatos: state.gatos
   }),
