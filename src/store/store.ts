@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import gatoInterface from './models/Gato'
+import services from './services'
 Vue.use(Vuex)
 
 export interface stateInterface {
@@ -20,8 +21,11 @@ const store = new Vuex.Store({
     }
   },
   getters: {
-    getSiameseGato:  (state, getters): gatoInterface[] => {
-      return state.gatos.filter(gato => gato.raza === 'siames')
+    getSiameseGato: (state, getters): gatoInterface[] => {
+      const gatosFiltered = state.gatos.filter(gato => {
+        return gato.raza === 'siames'
+      })
+      return gatosFiltered
     }
   }
 })
@@ -29,8 +33,9 @@ const store = new Vuex.Store({
 function addGatoMutationContract(gato: gatoInterface) {
   store.commit('ADD_GATO', gato)
 }
+
 function addGatosMutationContract(gato: gatoInterface[]) {
-  store.commit('ADD_GATO', gato)
+  store.commit('ADD_GATOS', gato)
 }
 
 export function getSiameseGatoContract(): gatoInterface[] {
@@ -41,8 +46,9 @@ export function addGatoActionContract(gato: gatoInterface) {
   addGatoMutationContract(gato)
 }
 
-export function addGatosActionContract(gatos: gatoInterface[]) {
-  addGatosMutationContract(gatos)
+export async function addGatosActionContract(gatos: gatoInterface[]) {
+  const gatosGetted = await services.getGatos()
+  addGatosMutationContract(gatosGetted)
 }
 
 

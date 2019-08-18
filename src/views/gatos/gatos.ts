@@ -3,7 +3,7 @@ import { addGatosActionContract, state, getSiameseGatoContract } from '../../sto
 import gatoInterface from '../../store/models/Gato'
 
 export default Vue.extend({
-  name: 'openNotebook',
+  name: 'gatos',
   data: () => ({
     gatos: state.gatos
   }),
@@ -13,7 +13,7 @@ export default Vue.extend({
     },
   },
   computed: {
-    getSiameseGato(){
+    getSiameseGatos(){
       return getSiameseGatoContract()
     }
   },

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import openNotebook from './views/openNotebook/openNotebook.vue';
+import gatos from './views/gatos/gatos';
 
 Vue.use(Router)
 
@@ -15,9 +15,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/notebook',
-      name: 'notebook',
-      component: openNotebook
+      path: '/gatos',
+      name: 'gatos',
+      component: gatos
     },
     {
       path: '/about',
